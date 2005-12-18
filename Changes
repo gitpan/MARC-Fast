@@ -1,0 +1,9 @@
+Revision history for Perl module MARC::Fast
+
+0.01 Sun Jan  2 03:42:23 2005
+	- original version; created by ExtUtils::ModuleMaker 0.32
+
+0.02 Sat Oct  8 17:57:37 CEST 2005
+	- convert repeatable fileds into repeatable subfields
+	  900^afoo and 900^abar -> 900^afoo^abar
+

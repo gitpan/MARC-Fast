@@ -1,0 +1,9 @@
+MANIFEST
+LICENSE
+README
+Changes
+Fast.pm
+t/001_marc.t
+Makefile.PL
+scripts/dump_fastmarc.pl
+META.yml                                 Module meta-data (added by MakeMaker)
