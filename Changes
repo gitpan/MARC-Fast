@@ -7,3 +7,6 @@ Revision history for Perl module MARC::Fast
 	- convert repeatable fileds into repeatable subfields
 	  900^afoo and 900^abar -> 900^afoo^abar
 
+0.03 Wed Dec 28 23:13:29 CET 2005
+	- really fixed repeatable subfields
+	- much nicer script/dump_fastmarc.pl with it's own POD

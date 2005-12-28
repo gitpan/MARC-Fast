@@ -7,7 +7,7 @@ use Data::Dumper;
 BEGIN {
 	use Exporter ();
 	use vars qw ($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-	$VERSION     = 0.02;
+	$VERSION     = 0.03;
 	@ISA         = qw (Exporter);
 	#Give a hoot don't pollute, do not export more than needed by default
 	@EXPORT      = qw ();
@@ -42,6 +42,11 @@ Read MARC database
 	quiet => 0,
 	debug => 0,
 	assert => 0,
+	hash_filter => sub {
+		my $t = shift;
+		$t =~ s/foo/bar/;
+		return $t;
+	},
   );
 
 =cut
@@ -283,6 +288,18 @@ sub to_hash {
 			if ($l =~ m/\x1F/) {
 				foreach my $t (split(/\x1F/,$l)) {
 					next if (! $t);
+					my $f = substr($t,0,1);
+					# repeatable subfileds. When we hit first one,
+					# store CURRENT (up to that) in first repetition
+					# of this record. Then, new record with same
+					# identifiers will be created.
+					if ($val->{$f}) {
+						push @{$rec->{$k}}, $val;
+						$val = {
+							i1 => $val->{i1},
+							i2 => $val->{i2},
+						};
+					}
 					$val->{substr($t,0,1)} = substr($t,1);
 				}
 			} else {
