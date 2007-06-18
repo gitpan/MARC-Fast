@@ -1,4 +1,20 @@
 ------------------------------------------------------------------------
+r14 | dpavlin | 2007-06-19 00:54:02 +0200 (Tue, 19 Jun 2007) | 2 lines
+Changed paths:
+   M /trunk/Fast.pm
+
+push new (slim) version [0.06]
+
+------------------------------------------------------------------------
+r13 | dpavlin | 2007-06-19 00:51:04 +0200 (Tue, 19 Jun 2007) | 2 lines
+Changed paths:
+   M /trunk/Changes
+   M /trunk/MANIFEST
+   M /trunk/t/001_marc.t
+
+remove huge unimarc.iso file from distribution
+
+------------------------------------------------------------------------
 r12 | dpavlin | 2007-06-19 00:32:41 +0200 (Tue, 19 Jun 2007) | 2 lines
 Changed paths:
    M /trunk/Changes

@@ -23,7 +23,7 @@ throws_ok { $marc = MARC::Fast->new(%param); } qr/foo.bar/, "marcdb exist";
 $param{marcdb} = 'data/unimarc.iso';
 
 SKIP: {
-	skip "no $param{marcdb} test file ", 17 unless (-e $param{marcdb});
+	skip "no $param{marcdb} test file ", 37 unless (-e $param{marcdb});
 
 	ok($marc = MARC::Fast->new(%param), "new");
 
