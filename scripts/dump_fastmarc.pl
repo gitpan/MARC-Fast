@@ -19,13 +19,13 @@ dump_fastmarc.pl - display MARC records
 
 =over 16
 
-=item -n number
+=item -o offset
 
-dump just record C<number>
+dump records starting with C<offset>
 
 =item -l limit
 
-import just first C<limit> records
+dump just C<limit> records
 
 =item -h
 
@@ -40,9 +40,9 @@ turn debugging output on
 =cut
 
 my %opt;
-getopts('dn:l:h', \%opt);
+getopts('do:l:h', \%opt);
 
-my $file = shift @ARGV || die "usage: $0 [-n number] [-l limit] [-h] [-d] file.marc\n";
+my $file = shift @ARGV || die "usage: $0 [-o offset] [-l limit] [-h] [-d] file.marc\n";
 
 my $marc = new MARC::Fast(
 	marcdb => $file,
@@ -67,12 +67,6 @@ for my $mfn ($min .. $max) {
 	my $rec = $marc->fetch($mfn) || next;
 	print "rec is ",Dumper($rec) if ($opt{d});
 	print "REC $mfn\n";
-	foreach my $f (sort keys %{$rec}) {
-		my $dump = join('', @{ $rec->{$f} });
-		$dump =~ s/\x1e$//;
-		$dump =~ s/\x1f/\$/g;
-		print "$f\t$dump\n";
-	}
-	print "\n";
+	print $marc->to_ascii($mfn),"\n";
 	print "hash is ",Dumper($marc->to_hash($mfn)) if ($opt{h});
 }

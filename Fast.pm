@@ -1,5 +1,5 @@
-
 package MARC::Fast;
+
 use strict;
 use Carp;
 use Data::Dumper;
@@ -7,7 +7,7 @@ use Data::Dumper;
 BEGIN {
 	use Exporter ();
 	use vars qw ($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-	$VERSION     = 0.03;
+	$VERSION     = 0.05;
 	@ISA         = qw (Exporter);
 	#Give a hoot don't pollute, do not export more than needed by default
 	@EXPORT      = qw ();
@@ -43,7 +43,7 @@ Read MARC database
 	debug => 0,
 	assert => 0,
 	hash_filter => sub {
-		my $t = shift;
+		my ($t, $record_number) = @_;
 		$t =~ s/foo/bar/;
 		return $t;
 	},
@@ -270,14 +270,14 @@ sub to_hash {
 
 	my $row = $self->fetch($mfn) || return;
 
-	foreach my $k (keys %{$row}) {
-		foreach my $l (@{$row->{$k}}) {
+	foreach my $rec_nr (keys %{$row}) {
+		foreach my $l (@{$row->{$rec_nr}}) {
 
 			# remove end marker
 			$l =~ s/\x1E$//;
 
 			# filter output
-			$l = $self->{'hash_filter'}->($l) if ($self->{'hash_filter'});
+			$l = $self->{'hash_filter'}->($l, $rec_nr) if ($self->{'hash_filter'});
 
 			my $val;
 
@@ -294,7 +294,7 @@ sub to_hash {
 					# of this record. Then, new record with same
 					# identifiers will be created.
 					if ($val->{$f}) {
-						push @{$rec->{$k}}, $val;
+						push @{$rec->{$rec_nr}}, $val;
 						$val = {
 							i1 => $val->{i1},
 							i2 => $val->{i2},
@@ -306,24 +306,39 @@ sub to_hash {
 				$val = $l;
 			}
 
-			push @{$rec->{$k}}, $val;
+			push @{$rec->{$rec_nr}}, $val;
 		}
 	}
 
 	return $rec;
 }
 
+=head2 to_ascii
+
+  print $marc->to_ascii( 42 );
+
+=cut
+
+sub to_ascii {
+	my $self = shift;
+
+	my $mfn = shift || confess "need mfn";
+	my $row = $self->fetch($mfn) || return;
+
+	my $out;
+
+	foreach my $f (sort keys %{$row}) {
+		my $dump = join('', @{ $row->{$f} });
+		$dump =~ s/\x1e$//;
+		$dump =~ s/\x1f/\$/g;
+		$out .= "$f\t$dump\n";
+	}
+
+	return $out;
+}
 
 1;
 __END__
-
-=head1 BUGS
-
-
-
-=head1 SUPPORT
-
-
 
 =head1 AUTHOR
 
@@ -343,6 +358,6 @@ LICENSE file included with this module.
 
 =head1 SEE ALSO
 
-perl(1).
+L<Biblio::Isis>, perl(1).
 
 =cut

@@ -1,9 +1,10 @@
-MANIFEST
-LICENSE
-README
 Changes
+data/unimarc.iso
 Fast.pm
-t/001_marc.t
+LICENSE
 Makefile.PL
+MANIFEST
+META.yml			Module meta-data (added by MakeMaker)
+README
 scripts/dump_fastmarc.pl
-META.yml                                 Module meta-data (added by MakeMaker)
+t/001_marc.t

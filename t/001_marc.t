@@ -3,11 +3,13 @@
 use strict;
 use blib;
 
-use Test::More tests => 20;
+use Test::More tests => 40;
 use Test::Exception;
-use Data::Dumper;
+use Data::Dump qw/dump/;
 
 BEGIN { use_ok( 'MARC::Fast' ); }
+
+my $debug = shift @ARGV;
 
 my $marc;
 my %param;
@@ -27,6 +29,8 @@ SKIP: {
 
 	isa_ok ($marc, 'MARC::Fast');
 
+	#diag Dumper($marc);
+
 	cmp_ok($marc->count, '==', scalar @{$marc->{leaders}}, "count == leaders");
 	cmp_ok($marc->count, '==', scalar @{$marc->{fh_offset}}, "count == fh_offset");
 
@@ -36,5 +40,10 @@ SKIP: {
 
 	foreach (1 .. 10) {
 		ok($marc->fetch($_), "fetch $_");
+
+		ok(my $hash = $marc->to_hash($_), "to_hash $_");
+		diag "to_hash($_) = ",dump($hash) if ($debug);
+		ok(my $ascii = $marc->to_ascii($_), "to_ascii $_");
+		diag "to_ascii($_) ::\n$ascii" if ($debug);
 	}
 }

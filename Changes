@@ -1,12 +1,105 @@
-Revision history for Perl module MARC::Fast
+------------------------------------------------------------------------
+r12 | dpavlin | 2007-06-19 00:32:41 +0200 (Tue, 19 Jun 2007) | 2 lines
+Changed paths:
+   M /trunk/Changes
+   M /trunk/MANIFEST
+   M /trunk/Makefile.PL
 
-0.01 Sun Jan  2 03:42:23 2005
-	- original version; created by ExtUtils::ModuleMaker 0.32
+release preparation
 
-0.02 Sat Oct  8 17:57:37 CEST 2005
-	- convert repeatable fileds into repeatable subfields
-	  900^afoo and 900^abar -> 900^afoo^abar
+------------------------------------------------------------------------
+r11 | dpavlin | 2006-11-03 21:34:31 +0100 (Fri, 03 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/Fast.pm
+   M /trunk/scripts/dump_fastmarc.pl
+   M /trunk/t/001_marc.t
 
-0.03 Wed Dec 28 23:13:29 CET 2005
-	- really fixed repeatable subfields
-	- much nicer script/dump_fastmarc.pl with it's own POD
+added to_ascii to be more like Biblio::ISIS API [0.05]
+
+------------------------------------------------------------------------
+r10 | dpavlin | 2006-11-03 21:07:58 +0100 (Fri, 03 Nov 2006) | 2 lines
+Changed paths:
+   M /trunk/scripts/dump_fastmarc.pl
+
+change terminology to offset and limit
+
+------------------------------------------------------------------------
+r9 | dpavlin | 2006-07-13 16:00:23 +0200 (Thu, 13 Jul 2006) | 2 lines
+Changed paths:
+   M /trunk/Fast.pm
+   M /trunk/META.yml
+   M /trunk/t/001_marc.t
+
+hash_filter now gets record number as second arguments to be in sync with Biblio::Isis 0.22
+
+------------------------------------------------------------------------
+r8 | dpavlin | 2005-12-28 23:16:39 +0100 (Wed, 28 Dec 2005) | 1 line
+Changed paths:
+   M /trunk/Changes
+   M /trunk/Fast.pm
+
+documented hash_filter, fully implemented repeatable subfileds. [0.03]
+------------------------------------------------------------------------
+r7 | dpavlin | 2005-12-28 23:03:24 +0100 (Wed, 28 Dec 2005) | 1 line
+Changed paths:
+   M /trunk/scripts/dump_fastmarc.pl
+
+pod documentation, new options, much nicer output
+------------------------------------------------------------------------
+r6 | dpavlin | 2005-12-19 00:12:26 +0100 (Mon, 19 Dec 2005) | 2 lines
+Changed paths:
+   M /trunk/Fast.pm
+   M /trunk/META.yml
+   M /trunk/scripts/dump_fastmarc.pl
+   M /trunk/t/001_marc.t
+
+added to_hash, small fix to test, better output in dump_fastmarc.pl [0.02]
+
+------------------------------------------------------------------------
+r5 | dpavlin | 2005-10-08 18:33:09 +0200 (Sat, 08 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/Changes
+   M /trunk/Fast.pm
+
+convert repeatable fileds into repeatable subfields
+
+------------------------------------------------------------------------
+r4 | dpavlin | 2005-10-08 18:32:54 +0200 (Sat, 08 Oct 2005) | 2 lines
+Changed paths:
+   M /trunk/scripts/dump_fastmarc.pl
+
+added option -n number to dump just one record and -d for debug
+
+------------------------------------------------------------------------
+r3 | dpavlin | 2005-04-08 14:19:24 +0200 (Fri, 08 Apr 2005) | 2 lines
+Changed paths:
+   M /trunk/scripts/dump_fastmarc.pl
+
+dump sorted fields
+
+------------------------------------------------------------------------
+r2 | dpavlin | 2005-01-04 16:32:54 +0100 (Tue, 04 Jan 2005) | 2 lines
+Changed paths:
+   M /trunk/t/001_marc.t
+
+check for test data and skip tests if it doesn't exists
+
+------------------------------------------------------------------------
+r1 | dpavlin | 2005-01-04 11:26:07 +0100 (Tue, 04 Jan 2005) | 2 lines
+Changed paths:
+   A /trunk
+   A /trunk/Changes
+   A /trunk/Fast.pm
+   A /trunk/LICENSE
+   A /trunk/MANIFEST
+   A /trunk/META.yml
+   A /trunk/Makefile.PL
+   A /trunk/README
+   A /trunk/scripts
+   A /trunk/scripts/dump_fastmarc.pl
+   A /trunk/t
+   A /trunk/t/001_marc.t
+
+initital import of 0.01 into subversion
+
+------------------------------------------------------------------------

@@ -12,3 +12,23 @@ WriteMakefile(
 	'Carp' => 0,
     },
 );
+
+sub MY::postamble {
+	return <<'MAKE_MORE';
+
+changelog:
+	svn update && svn -v log > Changes
+
+cpan:
+	make clean
+	rm -f MARC-Fast-*.tar.gz
+	perl Makefile.PL
+	make changelog
+	make dist
+	make disttest
+	@echo
+	@echo -n "Upload" MARC-Fast-*.tar.gz "to CPAN? [y/N]:"
+	@read upload && test "$$upload" == "y" && cpan-upload -verbose MARC-Fast-*.tar.gz
+
+MAKE_MORE
+}
