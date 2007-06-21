@@ -1,4 +1,25 @@
 ------------------------------------------------------------------------
+r17 | dpavlin | 2007-06-21 12:24:12 +0200 (Thu, 21 Jun 2007) | 2 lines
+Changed paths:
+   M /trunk/Fast.pm
+
+update version [0.07]
+
+------------------------------------------------------------------------
+r16 | dpavlin | 2007-06-21 12:23:12 +0200 (Thu, 21 Jun 2007) | 2 lines
+Changed paths:
+   M /trunk/t/001_marc.t
+
+make Data::Dump optional
+
+------------------------------------------------------------------------
+r15 | dpavlin | 2007-06-21 12:05:39 +0200 (Thu, 21 Jun 2007) | 2 lines
+Changed paths:
+   D /trunk/Changes
+
+auto-generated from svn log
+
+------------------------------------------------------------------------
 r14 | dpavlin | 2007-06-19 00:54:02 +0200 (Tue, 19 Jun 2007) | 2 lines
 Changed paths:
    M /trunk/Fast.pm
