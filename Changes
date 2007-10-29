@@ -1,4 +1,35 @@
 ------------------------------------------------------------------------
+r21 | dpavlin | 2007-10-29 23:41:21 +0100 (Mon, 29 Oct 2007) | 2 lines
+Changed paths:
+   M /trunk/t/001_marc.t
+
+correctly skip tests if there is no test MARC file
+
+------------------------------------------------------------------------
+r20 | dpavlin | 2007-10-29 23:40:58 +0100 (Mon, 29 Oct 2007) | 2 lines
+Changed paths:
+   M /trunk/MANIFEST
+
+update
+
+------------------------------------------------------------------------
+r19 | dpavlin | 2007-10-29 23:38:55 +0100 (Mon, 29 Oct 2007) | 2 lines
+Changed paths:
+   A /trunk/t/camel.usmarc
+
+included sample marc file from MARC-Record-2.0
+
+------------------------------------------------------------------------
+r18 | dpavlin | 2007-10-29 23:33:35 +0100 (Mon, 29 Oct 2007) | 4 lines
+Changed paths:
+   M /trunk/Fast.pm
+   M /trunk/t/001_marc.t
+
+added $marc->last_leader which returns leader of
+last record accessed with $marc->fetch
+bump version to [0.08]
+
+------------------------------------------------------------------------
 r17 | dpavlin | 2007-06-21 12:24:12 +0200 (Thu, 21 Jun 2007) | 2 lines
 Changed paths:
    M /trunk/Fast.pm

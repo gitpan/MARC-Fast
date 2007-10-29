@@ -7,7 +7,7 @@ use Data::Dumper;
 BEGIN {
 	use Exporter ();
 	use vars qw ($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-	$VERSION     = 0.07;
+	$VERSION     = 0.08;
 	@ISA         = qw (Exporter);
 	#Give a hoot don't pollute, do not export more than needed by default
 	@EXPORT      = qw ();
@@ -23,12 +23,21 @@ MARC::Fast - Very fast implementation of MARC database reader
 
   use MARC::Fast;
 
+  my $marc = new MARC::Fast(
+  	marcdb => 'unimarc.iso',
+  );
+
+  foreach my $mfn ( 1 .. $marc->count ) {
+  	print $marc->to_ascii( $mfn );
+  }
+
+For longer example with command line options look at L<scripts/dump_fastmarc.pl>
 
 =head1 DESCRIPTION
 
 This is very fast alternative to C<MARC> and C<MARC::Record> modules.
 
-It's is also very sutable for random access to MARC records (as opposed to
+It's is also very subtable for random access to MARC records (as opposed to
 sequential one).
 
 =head1 METHODS
@@ -111,7 +120,7 @@ sub new {
 		print STDERR "REC ",$self->{count},": $leader\n" if ($self->{debug});
 
 		# store leader for later
-		push @{$self->{leaders}}, $leader;
+		push @{$self->{leader}}, $leader;
 
 		# skip to next record
 		my $o = substr($leader,0,5);
@@ -145,14 +154,22 @@ Fetch record from database
 
   my $hash = $marc->fetch(42);
 
+First record number is C<1>
+
 =cut
 
 sub fetch {
 	my $self = shift;
 
-	my $rec_nr = shift || return;
+	my $rec_nr = shift;
 
-	my $leader = $self->{leaders}->[$rec_nr - 1];
+	if ( ! $rec_nr ) {
+		$self->{last_leader} = undef;
+		return;
+	}
+
+	my $leader = $self->{leader}->[$rec_nr - 1];
+	$self->{last_leader} = $leader;
 	unless ($leader) {
 		carp "can't find record $rec_nr";
 		return;
@@ -231,6 +248,26 @@ sub fetch {
 	}
 
 	return $row;
+}
+
+
+=head2 last_leader
+
+Returns leader of last record L<fetch>ed
+
+  print $marc->last_leader;
+
+Added in version 0.08 of this module, so if you need it use:
+
+  use MARC::Fast 0.08;
+
+to be sure that it's supported.
+
+=cut
+
+sub last_leader {
+	my $self = shift;
+	return $self->{last_leader};
 }
 
 
