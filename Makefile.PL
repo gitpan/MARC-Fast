@@ -9,6 +9,7 @@ WriteMakefile(
     PREREQ_PM    => {
 	'Test::Simple' => 0.44,
 	'Test::Exception' => 0,
+	'Data::Dump' => 0,
 	'Carp' => 0,
     },
 );
@@ -17,7 +18,7 @@ sub MY::postamble {
 	return <<'MAKE_MORE';
 
 changelog:
-	svn update && svn -v log > Changes
+	svk update && svk log -v > Changes
 
 cpan:
 	make clean

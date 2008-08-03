@@ -1,173 +1,215 @@
-------------------------------------------------------------------------
-r21 | dpavlin | 2007-10-29 23:41:21 +0100 (Mon, 29 Oct 2007) | 2 lines
+----------------------------------------------------------------------
+r2865 (orig r27):  dpavlin | 2008-08-03 08:49:12 +0200
 Changed paths:
-   M /trunk/t/001_marc.t
+  M  /mirror/MARC-Fast/trunk/Makefile.PL
+
+pull Changes from svk and release to CPAN 0.09
+----------------------------------------------------------------------
+r2372 (orig r26):  dpavlin | 2007-11-19 17:37:00 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+  M  /mirror/MARC-Fast/trunk/Makefile.PL
+  M  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
+  M  /mirror/MARC-Fast/trunk/t/001_marc.t
+
+use Data::Dump for nicer (shorter/more readable) output instead of
+Data::Dumper
+----------------------------------------------------------------------
+r2330 (orig r25):  dpavlin | 2007-11-06 21:06:26 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
+
+include subfields in to_hash dump
+----------------------------------------------------------------------
+r2329 (orig r24):  dpavlin | 2007-11-06 21:06:07 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+
+correctly upgrade repeatable field value to array
+----------------------------------------------------------------------
+r2328 (orig r23):  dpavlin | 2007-11-04 23:44:42 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+  M  /mirror/MARC-Fast/trunk/t/001_marc.t
+
+much more sane implementation of to_hash which now include
+option include_subfields just like Biblio::Isis does. [0.09]
+----------------------------------------------------------------------
+r2327 (orig r22):  dpavlin | 2007-10-30 17:41:06 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
+
+display also leader in dump
+----------------------------------------------------------------------
+r2326 (orig r21):  dpavlin | 2007-10-29 23:41:21 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/t/001_marc.t
 
 correctly skip tests if there is no test MARC file
 
-------------------------------------------------------------------------
-r20 | dpavlin | 2007-10-29 23:40:58 +0100 (Mon, 29 Oct 2007) | 2 lines
+----------------------------------------------------------------------
+r2325 (orig r20):  dpavlin | 2007-10-29 23:40:58 +0100
 Changed paths:
-   M /trunk/MANIFEST
+  M  /mirror/MARC-Fast/trunk/MANIFEST
 
 update
 
-------------------------------------------------------------------------
-r19 | dpavlin | 2007-10-29 23:38:55 +0100 (Mon, 29 Oct 2007) | 2 lines
+----------------------------------------------------------------------
+r2324 (orig r19):  dpavlin | 2007-10-29 23:38:55 +0100
 Changed paths:
-   A /trunk/t/camel.usmarc
+  A  /mirror/MARC-Fast/trunk/t/camel.usmarc
 
 included sample marc file from MARC-Record-2.0
 
-------------------------------------------------------------------------
-r18 | dpavlin | 2007-10-29 23:33:35 +0100 (Mon, 29 Oct 2007) | 4 lines
+----------------------------------------------------------------------
+r2323 (orig r18):  dpavlin | 2007-10-29 23:33:35 +0100
 Changed paths:
-   M /trunk/Fast.pm
-   M /trunk/t/001_marc.t
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+  M  /mirror/MARC-Fast/trunk/t/001_marc.t
 
 added $marc->last_leader which returns leader of
 last record accessed with $marc->fetch
 bump version to [0.08]
 
-------------------------------------------------------------------------
-r17 | dpavlin | 2007-06-21 12:24:12 +0200 (Thu, 21 Jun 2007) | 2 lines
+----------------------------------------------------------------------
+r2322 (orig r17):  dpavlin | 2007-06-21 12:24:12 +0200
 Changed paths:
-   M /trunk/Fast.pm
+  M  /mirror/MARC-Fast/trunk/Fast.pm
 
 update version [0.07]
 
-------------------------------------------------------------------------
-r16 | dpavlin | 2007-06-21 12:23:12 +0200 (Thu, 21 Jun 2007) | 2 lines
+----------------------------------------------------------------------
+r2321 (orig r16):  dpavlin | 2007-06-21 12:23:12 +0200
 Changed paths:
-   M /trunk/t/001_marc.t
+  M  /mirror/MARC-Fast/trunk/t/001_marc.t
 
 make Data::Dump optional
 
-------------------------------------------------------------------------
-r15 | dpavlin | 2007-06-21 12:05:39 +0200 (Thu, 21 Jun 2007) | 2 lines
+----------------------------------------------------------------------
+r2320 (orig r15):  dpavlin | 2007-06-21 12:05:39 +0200
 Changed paths:
-   D /trunk/Changes
+  D  /mirror/MARC-Fast/trunk/Changes
 
 auto-generated from svn log
 
-------------------------------------------------------------------------
-r14 | dpavlin | 2007-06-19 00:54:02 +0200 (Tue, 19 Jun 2007) | 2 lines
+----------------------------------------------------------------------
+r2319 (orig r14):  dpavlin | 2007-06-19 00:54:02 +0200
 Changed paths:
-   M /trunk/Fast.pm
+  M  /mirror/MARC-Fast/trunk/Fast.pm
 
 push new (slim) version [0.06]
 
-------------------------------------------------------------------------
-r13 | dpavlin | 2007-06-19 00:51:04 +0200 (Tue, 19 Jun 2007) | 2 lines
+----------------------------------------------------------------------
+r2318 (orig r13):  dpavlin | 2007-06-19 00:51:04 +0200
 Changed paths:
-   M /trunk/Changes
-   M /trunk/MANIFEST
-   M /trunk/t/001_marc.t
+  M  /mirror/MARC-Fast/trunk/Changes
+  M  /mirror/MARC-Fast/trunk/MANIFEST
+  M  /mirror/MARC-Fast/trunk/t/001_marc.t
 
 remove huge unimarc.iso file from distribution
 
-------------------------------------------------------------------------
-r12 | dpavlin | 2007-06-19 00:32:41 +0200 (Tue, 19 Jun 2007) | 2 lines
+----------------------------------------------------------------------
+r2317 (orig r12):  dpavlin | 2007-06-19 00:32:41 +0200
 Changed paths:
-   M /trunk/Changes
-   M /trunk/MANIFEST
-   M /trunk/Makefile.PL
+  M  /mirror/MARC-Fast/trunk/Changes
+  M  /mirror/MARC-Fast/trunk/MANIFEST
+  M  /mirror/MARC-Fast/trunk/Makefile.PL
 
 release preparation
 
-------------------------------------------------------------------------
-r11 | dpavlin | 2006-11-03 21:34:31 +0100 (Fri, 03 Nov 2006) | 2 lines
+----------------------------------------------------------------------
+r2316 (orig r11):  dpavlin | 2006-11-03 21:34:31 +0100
 Changed paths:
-   M /trunk/Fast.pm
-   M /trunk/scripts/dump_fastmarc.pl
-   M /trunk/t/001_marc.t
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+  M  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
+  M  /mirror/MARC-Fast/trunk/t/001_marc.t
 
 added to_ascii to be more like Biblio::ISIS API [0.05]
 
-------------------------------------------------------------------------
-r10 | dpavlin | 2006-11-03 21:07:58 +0100 (Fri, 03 Nov 2006) | 2 lines
+----------------------------------------------------------------------
+r2315 (orig r10):  dpavlin | 2006-11-03 21:07:58 +0100
 Changed paths:
-   M /trunk/scripts/dump_fastmarc.pl
+  M  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
 
 change terminology to offset and limit
 
-------------------------------------------------------------------------
-r9 | dpavlin | 2006-07-13 16:00:23 +0200 (Thu, 13 Jul 2006) | 2 lines
+----------------------------------------------------------------------
+r2314 (orig r9):  dpavlin | 2006-07-13 16:00:23 +0200
 Changed paths:
-   M /trunk/Fast.pm
-   M /trunk/META.yml
-   M /trunk/t/001_marc.t
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+  M  /mirror/MARC-Fast/trunk/META.yml
+  M  /mirror/MARC-Fast/trunk/t/001_marc.t
 
 hash_filter now gets record number as second arguments to be in sync with Biblio::Isis 0.22
 
-------------------------------------------------------------------------
-r8 | dpavlin | 2005-12-28 23:16:39 +0100 (Wed, 28 Dec 2005) | 1 line
+----------------------------------------------------------------------
+r2313 (orig r8):  dpavlin | 2005-12-28 23:16:39 +0100
 Changed paths:
-   M /trunk/Changes
-   M /trunk/Fast.pm
+  M  /mirror/MARC-Fast/trunk/Changes
+  M  /mirror/MARC-Fast/trunk/Fast.pm
 
 documented hash_filter, fully implemented repeatable subfileds. [0.03]
-------------------------------------------------------------------------
-r7 | dpavlin | 2005-12-28 23:03:24 +0100 (Wed, 28 Dec 2005) | 1 line
+----------------------------------------------------------------------
+r2312 (orig r7):  dpavlin | 2005-12-28 23:03:24 +0100
 Changed paths:
-   M /trunk/scripts/dump_fastmarc.pl
+  M  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
 
 pod documentation, new options, much nicer output
-------------------------------------------------------------------------
-r6 | dpavlin | 2005-12-19 00:12:26 +0100 (Mon, 19 Dec 2005) | 2 lines
+----------------------------------------------------------------------
+r2311 (orig r6):  dpavlin | 2005-12-19 00:12:26 +0100
 Changed paths:
-   M /trunk/Fast.pm
-   M /trunk/META.yml
-   M /trunk/scripts/dump_fastmarc.pl
-   M /trunk/t/001_marc.t
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+  M  /mirror/MARC-Fast/trunk/META.yml
+  M  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
+  M  /mirror/MARC-Fast/trunk/t/001_marc.t
 
 added to_hash, small fix to test, better output in dump_fastmarc.pl [0.02]
 
-------------------------------------------------------------------------
-r5 | dpavlin | 2005-10-08 18:33:09 +0200 (Sat, 08 Oct 2005) | 2 lines
+----------------------------------------------------------------------
+r2310 (orig r5):  dpavlin | 2005-10-08 18:33:09 +0200
 Changed paths:
-   M /trunk/Changes
-   M /trunk/Fast.pm
+  M  /mirror/MARC-Fast/trunk/Changes
+  M  /mirror/MARC-Fast/trunk/Fast.pm
 
 convert repeatable fileds into repeatable subfields
 
-------------------------------------------------------------------------
-r4 | dpavlin | 2005-10-08 18:32:54 +0200 (Sat, 08 Oct 2005) | 2 lines
+----------------------------------------------------------------------
+r2309 (orig r4):  dpavlin | 2005-10-08 18:32:54 +0200
 Changed paths:
-   M /trunk/scripts/dump_fastmarc.pl
+  M  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
 
 added option -n number to dump just one record and -d for debug
 
-------------------------------------------------------------------------
-r3 | dpavlin | 2005-04-08 14:19:24 +0200 (Fri, 08 Apr 2005) | 2 lines
+----------------------------------------------------------------------
+r2308 (orig r3):  dpavlin | 2005-04-08 14:19:24 +0200
 Changed paths:
-   M /trunk/scripts/dump_fastmarc.pl
+  M  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
 
 dump sorted fields
 
-------------------------------------------------------------------------
-r2 | dpavlin | 2005-01-04 16:32:54 +0100 (Tue, 04 Jan 2005) | 2 lines
+----------------------------------------------------------------------
+r2307 (orig r2):  dpavlin | 2005-01-04 16:32:54 +0100
 Changed paths:
-   M /trunk/t/001_marc.t
+  M  /mirror/MARC-Fast/trunk/t/001_marc.t
 
 check for test data and skip tests if it doesn't exists
 
-------------------------------------------------------------------------
-r1 | dpavlin | 2005-01-04 11:26:07 +0100 (Tue, 04 Jan 2005) | 2 lines
+----------------------------------------------------------------------
+r2306 (orig r1):  dpavlin | 2005-01-04 11:26:07 +0100
 Changed paths:
-   A /trunk
-   A /trunk/Changes
-   A /trunk/Fast.pm
-   A /trunk/LICENSE
-   A /trunk/MANIFEST
-   A /trunk/META.yml
-   A /trunk/Makefile.PL
-   A /trunk/README
-   A /trunk/scripts
-   A /trunk/scripts/dump_fastmarc.pl
-   A /trunk/t
-   A /trunk/t/001_marc.t
+  A  /mirror/MARC-Fast/trunk
+  A  /mirror/MARC-Fast/trunk/Changes
+  A  /mirror/MARC-Fast/trunk/Fast.pm
+  A  /mirror/MARC-Fast/trunk/LICENSE
+  A  /mirror/MARC-Fast/trunk/MANIFEST
+  A  /mirror/MARC-Fast/trunk/META.yml
+  A  /mirror/MARC-Fast/trunk/Makefile.PL
+  A  /mirror/MARC-Fast/trunk/README
+  A  /mirror/MARC-Fast/trunk/scripts
+  A  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
+  A  /mirror/MARC-Fast/trunk/t
+  A  /mirror/MARC-Fast/trunk/t/001_marc.t
 
 initital import of 0.01 into subversion
 
-------------------------------------------------------------------------
+----------------------------------------------------------------------

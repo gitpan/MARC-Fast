@@ -5,7 +5,7 @@ use blib;
 
 use MARC::Fast;
 use Getopt::Std;
-use Data::Dumper;
+use Data::Dump qw/dump/;
 
 =head1 NAME
 
@@ -65,8 +65,9 @@ if (my $mfn = $opt{n}) {
 
 for my $mfn ($min .. $max) {
 	my $rec = $marc->fetch($mfn) || next;
-	print "rec is ",Dumper($rec) if ($opt{d});
+	print "rec is ",dump($rec) if ($opt{d});
 	print "REC $mfn\n";
+	print $marc->last_leader,"\n";
 	print $marc->to_ascii($mfn),"\n";
-	print "hash is ",Dumper($marc->to_hash($mfn)) if ($opt{h});
+	print "hash is ",dump($marc->to_hash($mfn)) if ($opt{h});
 }

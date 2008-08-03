@@ -3,8 +3,9 @@
 use strict;
 use blib;
 
-use Test::More tests => 53;
+use Test::More tests => 63;
 use Test::Exception;
+use Data::Dump qw/dump/;
 
 BEGIN {
 	use_ok( 'MARC::Fast' );
@@ -13,11 +14,6 @@ BEGIN {
 my $debug = shift @ARGV;
 
 my $marc_file = 't/camel.usmarc';
-
-if ( $debug ) {
-	eval { require Data::Dump; };
-	$debug = 0 if ($@);
-}
 
 my $marc;
 my %param;
@@ -50,16 +46,20 @@ SKIP: {
 	ok(! $marc->fetch($marc->count + 1), "fetch max+1:".($marc->count+1));
 
 	foreach (1 .. 10) {
-		ok($marc->fetch($_), "fetch $_");
+		ok($marc->fetch($_), "fetch($_)");
 
 		ok($marc->last_leader, "last_leader $_");
 
-		ok(my $hash = $marc->to_hash($_), "to_hash $_");
+		ok(my $hash = $marc->to_hash($_), "to_hash($_)");
 		diag "to_hash($_) = ",Data::Dump::dump($hash) if ($debug);
-		ok(my $ascii = $marc->to_ascii($_), "to_ascii $_");
+
+		ok(my $hash_sf = $marc->to_hash($_, include_subfields => 1), "to_hash($_,include_subfields)");
+		diag "to_hash($_, include_subfields => 1) = ",Data::Dump::dump($hash_sf) if ($debug);
+
+		ok(my $ascii = $marc->to_ascii($_), "to_ascii($_)");
 		diag "to_ascii($_) ::\n$ascii" if ($debug);
 	}
 
-	ok(! $marc->fetch(0), "fetch 0 again");
+	ok(! $marc->fetch(0), "fetch(0) again");
 	ok(! $marc->last_leader, "no last_leader");
 }

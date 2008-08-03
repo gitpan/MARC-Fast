@@ -1,13 +1,17 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         MARC-Fast
-version:      0.08
-version_from: Fast.pm
-installdirs:  site
-requires:
+--- #YAML:1.0
+name:                MARC-Fast
+version:             0.09
+abstract:            
+license:             ~
+author:              
+    - Dobrica Pavlinusic (dpavlin@rot13.org)
+generated_by:        ExtUtils::MakeMaker version 6.42
+distribution_type:   module
+requires:     
     Carp:                          0
+    Data::Dump:                    0
     Test::Exception:               0
     Test::Simple:                  0.44
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.30_01
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3
