@@ -4,7 +4,6 @@ use strict;
 use blib;
 
 use Test::More tests => 63;
-use Test::Exception;
 use Data::Dump qw/dump/;
 
 BEGIN {
@@ -18,11 +17,13 @@ my $marc_file = 't/camel.usmarc';
 my $marc;
 my %param;
 
-throws_ok { $marc = MARC::Fast->new(%param); } qr/marcdb/, "marcdb parametar";
+eval { $marc = MARC::Fast->new(%param) };
+ok( $@ =~ /marcdb/, "marcdb parametar" );
 
 $param{marcdb} = '/foo/bar/file';
 
-throws_ok { $marc = MARC::Fast->new(%param); } qr/foo.bar/, "marcdb exist";
+eval { $marc = MARC::Fast->new(%param) };
+ok( $@ =~ /foo.bar/, "marcdb exist" );
 
 $param{marcdb} = $marc_file if -e $marc_file;
 

@@ -1,4 +1,54 @@
 ----------------------------------------------------------------------
+r4337 (orig r35):  dpavlin | 2010-02-04 18:15:09 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+
+bump version [0.10]
+----------------------------------------------------------------------
+r4336 (orig r34):  dpavlin | 2010-02-04 18:14:52 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/MANIFEST
+
+add utf-8 tests and data into MANIFEST
+----------------------------------------------------------------------
+r4335 (orig r33):  dpavlin | 2010-02-04 18:13:18 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+
+don't card on junk at end, just warn
+----------------------------------------------------------------------
+r4334 (orig r32):  dpavlin | 2010-02-04 18:10:14 +0100
+Changed paths:
+  A  /mirror/MARC-Fast/trunk/t/002_marc-utf8.t
+  A  /mirror/MARC-Fast/trunk/t/utf8.marc
+
+added test and data for utf-8 encoding example
+----------------------------------------------------------------------
+r4333 (orig r31):  dpavlin | 2010-02-04 18:09:49 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+
+return correct count for marc files with additional junk bytes at end
+----------------------------------------------------------------------
+r4332 (orig r30):  dpavlin | 2010-02-04 18:08:03 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+
+added documentation about utf-8 encoded marc files and utf-8 flag in perl scalars
+----------------------------------------------------------------------
+r4331 (orig r29):  dpavlin | 2010-02-04 13:54:00 +0100
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/Makefile.PL
+  M  /mirror/MARC-Fast/trunk/t/001_marc.t
+
+don't depend on Test::Exception
+----------------------------------------------------------------------
+r2946 (orig r28):  dpavlin | 2008-09-06 12:40:52 +0200
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
+
+include_subfields with option -h
+----------------------------------------------------------------------
 r2865 (orig r27):  dpavlin | 2008-08-03 08:49:12 +0200
 Changed paths:
   M  /mirror/MARC-Fast/trunk/Makefile.PL

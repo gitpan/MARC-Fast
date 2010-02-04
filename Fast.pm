@@ -7,7 +7,7 @@ use Data::Dump qw/dump/;
 BEGIN {
 	use Exporter ();
 	use vars qw ($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-	$VERSION     = 0.09;
+	$VERSION     = 0.10;
 	@ISA         = qw (Exporter);
 	#Give a hoot don't pollute, do not export more than needed by default
 	@EXPORT      = qw ();
@@ -87,7 +87,8 @@ sub new {
 		my $len = read($self->{fh}, $leader, 24);
 
 		if ($len < 24) {
-			carp "short read of leader, aborting\n";
+			warn "short read of leader, aborting\n";
+			$self->{count}--;
 			last;
 		}
 
@@ -383,6 +384,27 @@ sub to_ascii {
 
 1;
 __END__
+
+=head1 UTF-8 ENCODING
+
+This module does nothing with encoding. But, since MARC format is byte
+oriented even when using UTF-8 which has variable number of bytes for each
+character, file is opened in binary mode.
+
+As a result, all scalars recturned to perl don't have utf-8 flag. Solution is
+to use C<hash_filter> and L<Encode> to decode utf-8 encoding like this:
+
+  use Encode;
+
+  my $marc = new MARC::Fast(
+  	marcdb => 'utf8.marc',
+	hash_filter => sub {
+		Encode::decode( 'utf-8', $_[0] );
+	},
+  );
+
+This will affect C<to_hash>, but C<fetch> will still return binary representation
+since it doesn't support C<hash_filter>.
 
 =head1 AUTHOR
 

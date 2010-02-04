@@ -7,4 +7,6 @@ META.yml			Module meta-data (added by MakeMaker)
 README
 scripts/dump_fastmarc.pl
 t/001_marc.t
+t/002_marc-utf8.t
 t/camel.usmarc
+t/utf8.marc

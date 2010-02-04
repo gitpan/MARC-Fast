@@ -69,5 +69,5 @@ for my $mfn ($min .. $max) {
 	print "REC $mfn\n";
 	print $marc->last_leader,"\n";
 	print $marc->to_ascii($mfn),"\n";
-	print "hash is ",dump($marc->to_hash($mfn)) if ($opt{h});
+	print "hash is ",dump($marc->to_hash($mfn, include_subfields => 1)) if ($opt{h});
 }
