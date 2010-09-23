@@ -1,4 +1,70 @@
 ----------------------------------------------------------------------
+r4359 (orig r45):  dpavlin | 2010-09-23 15:51:58 +0200
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/MANIFEST
+
+update MANIFEST
+----------------------------------------------------------------------
+r4358 (orig r44):  dpavlin | 2010-09-23 15:15:01 +0200
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/lib/MARC/Fast.pm
+
+bump version to [0.11]
+----------------------------------------------------------------------
+r4357 (orig r43):  dpavlin | 2010-09-23 15:14:37 +0200
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/t/003_marc-repeatable.t
+  D  /mirror/MARC-Fast/trunk/t/koha-105405.mrc
+  A  /mirror/MARC-Fast/trunk/t/koha-232766.mrc
+
+better example with repetable field and subfields
+----------------------------------------------------------------------
+r4356 (orig r42):  dpavlin | 2010-09-23 15:07:28 +0200
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/lib/MARC/Fast.pm
+
+fix repeatable subfields in to_hash
+----------------------------------------------------------------------
+r4355 (orig r41):  dpavlin | 2010-09-23 15:06:25 +0200
+Changed paths:
+  A  /mirror/MARC-Fast/trunk/t/koha-105405.mrc
+
+test data with repeatable subfield
+----------------------------------------------------------------------
+r4354 (orig r40):  dpavlin | 2010-09-23 15:05:59 +0200
+Changed paths:
+  A  /mirror/MARC-Fast/trunk/t/003_marc-repeatable.t
+
+test repeatable subfields
+----------------------------------------------------------------------
+r4353 (orig r39):  dpavlin | 2010-09-23 14:55:35 +0200
+Changed paths:
+  D  /mirror/MARC-Fast/trunk/Fast.pm
+  M  /mirror/MARC-Fast/trunk/Makefile.PL
+  A  /mirror/MARC-Fast/trunk/lib
+  A  /mirror/MARC-Fast/trunk/lib/MARC
+  A  /mirror/MARC-Fast/trunk/lib/MARC/Fast.pm (from /mirror/MARC-Fast/trunk/Fast.pm:4350)
+
+move Fast.pm into lib/MARC/Fast.pm
+----------------------------------------------------------------------
+r4352 (orig r38):  dpavlin | 2010-09-23 14:29:37 +0200
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/t/002_marc-utf8.t
+
+use file from $marc_file variable
+----------------------------------------------------------------------
+r4351 (orig r37):  dpavlin | 2010-09-23 14:26:42 +0200
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/scripts/dump_fastmarc.pl
+
+use lib instead of blib for local testing
+----------------------------------------------------------------------
+r4350 (orig r36):  dpavlin | 2010-09-23 14:24:38 +0200
+Changed paths:
+  M  /mirror/MARC-Fast/trunk/Fast.pm
+
+rename tag number to $tag
+----------------------------------------------------------------------
 r4337 (orig r35):  dpavlin | 2010-02-04 18:15:09 +0100
 Changed paths:
   M  /mirror/MARC-Fast/trunk/Fast.pm

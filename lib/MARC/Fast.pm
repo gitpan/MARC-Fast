@@ -7,7 +7,7 @@ use Data::Dump qw/dump/;
 BEGIN {
 	use Exporter ();
 	use vars qw ($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-	$VERSION     = 0.10;
+	$VERSION     = 0.11;
 	@ISA         = qw (Exporter);
 	#Give a hoot don't pollute, do not export more than needed by default
 	@EXPORT      = qw ();
@@ -311,14 +311,14 @@ sub to_hash {
 
 	my $row = $self->fetch($mfn) || return;
 
-	foreach my $rec_nr (keys %{$row}) {
-		foreach my $l (@{$row->{$rec_nr}}) {
+	foreach my $tag (keys %{$row}) {
+		foreach my $l (@{$row->{$tag}}) {
 
 			# remove end marker
 			$l =~ s/\x1E$//;
 
 			# filter output
-			$l = $self->{'hash_filter'}->($l, $rec_nr) if ($self->{'hash_filter'});
+			$l = $self->{'hash_filter'}->($l, $tag) if ($self->{'hash_filter'});
 
 			my $val;
 
@@ -333,25 +333,27 @@ sub to_hash {
 				foreach my $t (split(/\x1F/,$l)) {
 					next if (! $t);
 					my $f = substr($t,0,1);
+					my $v = substr($t,1);
 
 					push @subfields, ( $f, $sf_usage->{$f}++ || 0 );
 
 					# repeatable subfiled -- convert it to array
-					if ($val->{$f}) {
+					if ( defined $val->{$f} ) {
 						if ( ref($val->{$f}) ne 'ARRAY' ) {
-							$val->{$f} = [ $val->{$f}, $val ];
+							$val->{$f} = [ $val->{$f}, $v ];
 						} else {
-							push @{$val->{$f}}, $val;
+							push @{$val->{$f}}, $v;
 						}
+					} else {
+						$val->{$f} = $v;
 					}
-					$val->{substr($t,0,1)} = substr($t,1);
 				}
 				$val->{subfields} = [ @subfields ] if $args->{include_subfields};
 			} else {
 				$val = $l;
 			}
 
-			push @{$rec->{$rec_nr}}, $val;
+			push @{$rec->{$tag}}, $val;
 		}
 	}
 

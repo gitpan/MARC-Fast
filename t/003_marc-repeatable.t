@@ -1,9 +1,9 @@
 #!/usr/bin/perl -w
 
 use strict;
-use blib;
+use lib 'lib';
 
-use Test::More tests => 7;
+use Test::More tests => 8;
 use Data::Dump qw/dump/;
 
 BEGIN {
@@ -13,13 +13,10 @@ BEGIN {
 
 my $debug = shift @ARGV;
 
-my $marc_file = 't/utf8.marc';
+my $marc_file = 't/koha-232766.mrc';
 
 ok(my $marc = MARC::Fast->new(
 	marcdb => $marc_file,
-	hash_filter => sub {
-		Encode::decode( 'utf-8', $_[0] );
-	},
 ), "new");
 
 cmp_ok($marc->count, '==', 1, 'count' );
@@ -27,8 +24,9 @@ cmp_ok($marc->count, '==', 1, 'count' );
 ok(my $rec = $marc->fetch(1), "fetch 1");
 diag dump $rec if $debug;
 
-ok(my $hash = $marc->to_hash(1), "to_hash 1");
+ok(my $hash = $marc->to_hash(1, include_subfields => 1), "to_hash 1 include_subfields");
 diag dump $hash if $debug;
 
-ok( $hash->{260}->[0]->{'b'} eq "\x{160}kolska knjiga,", 'utf-8 flag' );
+ok( ref $hash->{653}->[0]->{'a'} eq '', 'first occurance not repeatable' );
+ok( ref $hash->{653}->[1]->{'a'} eq 'ARRAY', 'second is repetable' );
 

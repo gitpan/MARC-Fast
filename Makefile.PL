@@ -3,7 +3,7 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
     NAME         => 'MARC::Fast',
-    VERSION_FROM => 'Fast.pm', # finds $VERSION
+    VERSION_FROM => 'lib/MARC/Fast.pm', # finds $VERSION
     AUTHOR       => 'Dobrica Pavlinusic (dpavlin@rot13.org)',
     ABSTRACT     => '',
     PREREQ_PM    => {

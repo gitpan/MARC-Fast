@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               MARC-Fast
-version:            0.1
+version:            0.11
 abstract:           
 author:
     - Dobrica Pavlinusic (dpavlin@rot13.org)

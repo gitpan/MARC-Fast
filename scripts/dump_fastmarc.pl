@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
 use strict;
-use blib;
+use lib 'lib';
 
 use MARC::Fast;
 use Getopt::Std;
