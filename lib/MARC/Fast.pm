@@ -7,7 +7,7 @@ use Data::Dump qw/dump/;
 BEGIN {
 	use Exporter ();
 	use vars qw ($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-	$VERSION     = 0.11;
+	$VERSION     = 0.12;
 	@ISA         = qw (Exporter);
 	#Give a hoot don't pollute, do not export more than needed by default
 	@EXPORT      = qw ();
@@ -277,11 +277,14 @@ sub last_leader {
 
 Read record with specified MFN and convert it to hash
 
-  my $hash = $marc->to_hash( $mfn, include_subfields => 1, );
+  my $hash = $marc->to_hash( $mfn, include_subfields => 1,
+	hash_filter => sub { my ($l,$tag) = @_; return $l; }
+  );
 
 It has ability to convert characters (using C<hash_filter>) from MARC
 database before creating structures enabling character re-mapping or quick
-fix-up of data.
+fix-up of data. If you specified C<hash_filter> both in C<new> and C<to_hash>
+only the one from C<to_hash> will be used.
 
 This function returns hash which is like this:
 
@@ -305,6 +308,7 @@ sub to_hash {
 	my $mfn = shift || confess "need mfn!";
 
 	my $args = {@_};
+	my $filter_coderef = $args->{'hash_filter'} || $self->{'hash_filter'};
 
 	# init record to include MFN as field 000
 	my $rec = { '000' => [ $mfn ] };
@@ -318,7 +322,7 @@ sub to_hash {
 			$l =~ s/\x1E$//;
 
 			# filter output
-			$l = $self->{'hash_filter'}->($l, $tag) if ($self->{'hash_filter'});
+			$l = $filter_coderef->($l, $tag) if $filter_coderef;
 
 			my $val;
 

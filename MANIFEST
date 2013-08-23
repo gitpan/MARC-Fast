@@ -12,3 +12,4 @@ t/003_marc-repeatable.t
 t/camel.usmarc
 t/koha-232766.mrc
 t/utf8.marc
+t/004_marc-hash_filter.t
